@@ -38,6 +38,9 @@
         Path Parameter: id (number) - Unique identifier of the user.
         Response: No content (status code 204).
 
+Important - I added one-to-one relation between user and waller-address table between the users's address & wallet address's user property. I had to use the `class transform` package to get rid of circular reference errors.
+Other packages used - `typeorm` and `pg`
+
 ### Wallet Addresses:
 
     - GET /wallet-addresses: Retrieves all wallet addresses from the database.
