@@ -22,8 +22,10 @@ export class User {
   @Column({ unique: false })
   password: string;
 
+  // A onetoone relation connecting user' walletAddress details to the respective wallet address in that walletAddress table.
   @OneToOne(() => WalletAddress, (walletAddress) => walletAddress.user)
   @JoinColumn()
+  // Using transform to debug the circular dependency error that I was experiencing.
   @Transform(({ value }) => value && { ...value, user: undefined }, {
     toPlainOnly: true,
   })

@@ -48,6 +48,4 @@ export class UserController {
   remove(@Param('id') id: number): Promise<void> {
     return this.userService.deleteUser(id);
   }
-
-  // Implement other CRUD endpoints
 }
