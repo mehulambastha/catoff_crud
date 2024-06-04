@@ -10,6 +10,7 @@ export class WalletAddressService {
     private walletAddressRepository: Repository<WalletAddress>,
   ) {}
 
+  // again veyr basic CRUD functions, the bare bones of a Nest applicationl.
   async createWallet(walletAddress: WalletAddress): Promise<WalletAddress> {
     return await this.walletAddressRepository.save(walletAddress);
   }

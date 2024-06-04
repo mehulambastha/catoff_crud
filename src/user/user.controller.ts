@@ -19,10 +19,12 @@ export class UserData {
   password: string;
 }
 
+// defining the URL.
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  // These are equivalent of route files in expressJS where we define what controllers take power in which routes and etc.
   @Get()
   getAll(): Promise<User[]> {
     return this.userService.viewUser();
