@@ -6,10 +6,13 @@ import { User } from './user/user.entity';
 // import { UserService } from './user/user.service';
 // import { UserController } from './user/user.controller';
 import { WalletAddress } from './wallet/wallet.entity';
-import { UserController } from './user/user.controller';
-import { WalletAddressController } from './wallet/wallet.controller';
-import { UserService } from './user/user.service';
-import { WalletAddressService } from './wallet/wallet.service';
+// import { UserController } from './user/user.controller';
+// import { WalletAddressController } from './wallet/wallet.controller';
+// import { UserService } from './user/user.service';
+// import { WalletAddressService } from './wallet/wallet.service';
+import { UserModule } from './user/user.module';
+
+import { WalletModule } from './wallet/wallet.module';
 // import { WalletAddressService } from './wallet/wallet.service';
 // import { WalletAddressController } from './wallet/wallet.controller';
 
@@ -28,12 +31,14 @@ import { WalletAddressService } from './wallet/wallet.service';
       entities: [User, WalletAddress],
       synchronize: true,
     }),
+    UserModule,
+    WalletModule,
     // UserController,
     // UserService,
     // WalletAddressController,
     // WalletAddressService,
   ],
-  controllers: [AppController, UserController, WalletAddressController],
-  providers: [AppService, UserService, WalletAddressService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

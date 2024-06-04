@@ -2,15 +2,25 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { WalletAddress } from '../wallet/wallet.entity';
+// import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    private userRepository: Repository<User>,
+    @InjectRepository(WalletAddress)
+    private walletAddressRepository: Repository<WalletAddress>,
   ) {}
 
   async createUser(user: User): Promise<User> {
+    if (user.walletAddress) {
+      const walletAddress = user.walletAddress;
+      walletAddress.user = user;
+      user.walletAddress =
+        await this.walletAddressRepository.save(walletAddress);
+    }
     return await this.userRepository.save(user);
   }
 

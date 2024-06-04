@@ -7,7 +7,7 @@ import { WalletAddress } from '../wallet/wallet.entity';
 export class WalletAddressService {
   constructor(
     @InjectRepository(WalletAddress)
-    private readonly walletAddressRepository: Repository<WalletAddress>,
+    private walletAddressRepository: Repository<WalletAddress>,
   ) {}
 
   async createWallet(walletAddress: WalletAddress): Promise<WalletAddress> {

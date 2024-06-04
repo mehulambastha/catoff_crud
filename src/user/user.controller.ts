@@ -11,6 +11,14 @@ import {
 import { UserService } from './user.service';
 import { User } from '../user/user.entity';
 
+export class UserData {
+  id: number;
+  username: string;
+  email: string;
+  walletAddress: string;
+  password: string;
+}
+
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -27,6 +35,7 @@ export class UserController {
 
   @Post()
   create(@Body() User: User): Promise<User> {
+    console.log(User);
     return this.userService.createUser(User);
   }
 

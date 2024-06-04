@@ -18,6 +18,9 @@ export class User {
   @Column({ unique: true })
   email: string;
 
+  @Column({ unique: false })
+  password: string;
+
   @OneToOne(() => WalletAddress, (walletAddress) => walletAddress.user)
   @JoinColumn()
   walletAddress: WalletAddress;
