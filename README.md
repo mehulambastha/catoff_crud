@@ -62,4 +62,8 @@
         Path Parameter: id (number) - Unique identifier of the wallet address.
         Response: No content (status code 204
 
+`
+localhost:3000
+` This is the default API URL for nestjs.
+
 ## Please see comments in code for more details.
