@@ -6,6 +6,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { WalletAddress } from '../wallet/wallet.entity';
+import { Transform } from 'class-transformer';
 
 @Entity()
 export class User {
@@ -23,5 +24,8 @@ export class User {
 
   @OneToOne(() => WalletAddress, (walletAddress) => walletAddress.user)
   @JoinColumn()
+  @Transform(({ value }) => value && { ...value, user: undefined }, {
+    toPlainOnly: true,
+  })
   walletAddress: WalletAddress;
 }
